@@ -1,0 +1,28 @@
+{% extends 'LandmarxCoreBundle:Base:index.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/bundles/landmarxcore/css/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/landmarxlandmark/css/type.css') }}" />
+{% endblock %}
+
+{% block content %}
+    {% block info_overlay %}
+    <div id="info-overlay-wrapper">
+        <div class="info-overlay-bg"></div>
+        <div id="info-overlay">
+    <h2>{{ "landmark types" | title }}</h2>
+    {{ types | length }}
+    <ul>
+        {% for type in types %}
+        <li>
+            {{ type.name | title }}
+            <p>{{ type.description }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

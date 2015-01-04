@@ -1,0 +1,68 @@
+{% extends 'LandmarxCoreBundle:Base:show.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/landmarxresource/js/gmaps.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            map = new GMaps({
+                div: '#map',
+                lat: {{ landmark.geolocation.latitude }},
+                lng: {{ landmark.geolocation.longitude }},
+                MapTypeId: google.maps.MapTypeId.TERRAIN,
+                disableDefaultUI: true,
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/bundles/landmarxresource/css/show.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/landmarxlandmark/css/landmark.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('/bundles/landmarxresource/css/map.css') }}" />
+{% endblock %}
+
+{% block content %}
+    {% block gmap %}
+    <div id="map"></div>
+    {% endblock %}
+    {% include 'LandmarxResourceBundle:Overlay:show.html.twig' with { 'item': landmark } %}
+{% endblock %}
+
+{% block attributes %}
+{#
+<div class="span12 attributes">
+    <fieldset>
+        <legend>{{ 'attributes' | title }}</legend>
+        {% include 'LandmarxAttributeBundle:Attribute:index.html.twig' with { 'attributes': landmark.attributes } %}
+    </fieldset>
+</div>
+#}
+{% endblock %}
+
+{% block icon %}
+<div class="span4 icon">
+    <i class="icon {{ landmark.slug }}-icon"></i>
+</div>
+{% endblock %}
+
+{% block info %}
+<div class="span8 info">
+    <ul>
+        <li>{{ landmark.name | title }}</li>
+        <li>{{ landmark.type | title }}</li>
+        <li>{{ landmark.description }}</li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block categories %}
+<div class="span12 categories">
+    <fieldset>
+        <legend>{{ 'categories' | title }}</legend>
+        {% include 'LandmarxLandmarkBundle:Category:index.html.twig' with { 'categories': landmark.categories } %}
+    </fieldset>
+</div>
+{% endblock %}

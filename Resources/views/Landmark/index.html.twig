@@ -1,0 +1,32 @@
+{% extends 'LandmarxCoreBundle:Base:index.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/landmarxlandmark/js/gmaps.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            map = new GMaps({
+                div: '#map',
+                lat: {{ current['latitude'] }},
+                lng: {{ current['longitude'] }},
+                MapTypeId: google.maps.MapTypeId.TERRAIN,
+                disableDefaultUI: true,
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/bundles/landmarxcore/css/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/landmarxlandmark/css/landmark.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/landmarxlandmark/css/map.css') }}" />
+{% endblock %}
+
+{% block content %}
+    {% block gmap %}
+    <div id="map"></div>
+    {% endblock %}
+    {% include 'LandmarxLandmarkBundle:Overlay:nearby.html.twig' with { 'landmarks': landmarks} %}
+{% endblock %}

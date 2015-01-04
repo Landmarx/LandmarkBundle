@@ -1,0 +1,48 @@
+{% extends 'LandmarxCoreBundle:Base:new.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/bundles/landmarxcore/css/new.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/landmarxcore/css/form.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/bundles/landmarxlandmark/css/type.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+    <div id="form-container">
+        <fieldset>
+            <h2>{{ 'add a landmark type' | title }}</h2>
+            <form action="{{ path('landmark_type_new') }}" method="post" {{ form_enctype(form) }}>
+                {% block form %}
+                <div id="form-errors" class="hidden">
+                    {{ form_errors(form) }}
+                </div>
+                <div class="row-fluid">
+                    <div id="left-pane">
+                        <div class="control-group slider">
+                            {{ form_row(form.name) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row(form.description) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row(form.parent) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row(form.public) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_rest(form) }}
+                        </div>
+                    </div>
+                    <div class="control-group slider">
+                        <button class="btn btn-primary btn-block" name="submit">{{ 'add' | title }}</button>
+                    </div>
+                </div>
+                {% endblock %}
+            </form>
+        </fieldset>
+    </div>
+{% endblock %}
