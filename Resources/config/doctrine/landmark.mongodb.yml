@@ -1,0 +1,122 @@
+Landmarx\Bundle\LandmarkBundle\Model\Landmark:
+    type: document
+    collection: Landmarks
+    fields:
+        id:
+            id: true
+            type: id
+        name:
+            type: string
+            length: 180
+        description:
+            type: string
+            nullable: true
+        briefDescription:
+            type: string
+            length: 50
+            nullable: true
+        visibility:
+            type: boolean
+        slug:
+            type: string
+            gedmo:
+                slug:
+                    fields: [name]
+        createdAt:
+            type: date
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: date
+            gedmo:
+                timestampable:
+                    on: update
+        createdBy:
+            type: string
+            gedmo:
+                blameable:
+                    on: create
+        updatedBy:
+            type: string
+            gedmo:
+                blameable:
+                    on: update
+        position:
+            type: integer
+            gedmo:
+                - sortablePosition
+    referenceOne:
+        type:
+            targetDocument: Landmarx\Bundle\LandmarkBundle\Model\Type
+        parent:
+            targetDocument: Landmarx\Bundle\LandmarkBundle\Model\Landmark
+            nullable: true
+            gedmo:
+                - sortableGroup
+        location:
+            targetDocument: Landmarx\Bundle\LocationBundle\Model\Location
+    referenceMany:
+        children:
+            targetDocument: Landmarx\Bundle\LandmarkBundle\Model\Landmark
+            nullable: true
+            gedmo:
+                - sortableGroup
+Landmarx\Bundle\LandmarkBundle\Model\Type:
+    type: document
+    collection: LandmarkTypes
+    fields:
+        id:
+            id: true
+            type: id
+        name:
+            type: string
+            length: 180
+        description:
+            type: string
+            nullable: true
+        briefDescription:
+            type: string
+            length: 50
+            nullable: true
+        slug:
+            type: string
+            gedmo:
+                slug:
+                    fields: [name]
+        createdAt:
+            type: date
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: date
+            gedmo:
+                timestampable:
+                    on: update
+        createdBy:
+            type: string
+            gedmo:
+                blameable:
+                    on: create
+        updatedBy:
+            type: string
+            gedmo:
+                blameable:
+                    on: update
+        position:
+            type: integer
+            gedmo:
+                - sortablePosition
+    referenceOne:
+        parent:
+            targetDocument: Landmarx\Bundle\LandmarkBundle\Model\Type
+            nullable: true
+            gedmo:
+                - sortableGroup
+    referenceMany:
+        children:
+            targetDocument: Landmarx\Bundle\LandmarkBundle\Model\Type
+            nullable: true
+            gedmo:
+                - sortableGroup

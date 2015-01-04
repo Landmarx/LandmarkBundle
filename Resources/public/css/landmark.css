@@ -1,0 +1,27 @@
+/************************************************
+**                Info Overlay                 **
+************************************************/
+#info-overlay-wrapper {
+    position: relative;
+    min-width: 200px;
+    min-height: 400px;
+    float: right;
+    top: 160px;
+    padding-right: 40px;
+}
+#info-overlay-bg { 
+    filter: alpha(opacity=30); 
+    -moz-opacity: 0.3; 
+    -khtml-opacity: 0.3; 
+    opacity: 0.3;  
+    border-radius: 5px 5px; 
+    float: right; 
+    min-width: 200px;
+    min-height: 400px;
+}
+#info-overlay {
+    position: absolute;
+    top: 20px; 
+    left: 20px;
+    background: #efefef; 
+}

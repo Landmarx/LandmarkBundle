@@ -1,0 +1,18 @@
+landmarx_landmark_index:
+    path: /{page}
+    defaults: { _controller: LandmarxLandmarkBundle:Landmark:index, page: 1 }
+landmarx_landmark_index_by_type:
+    path: /by-type/{slug}/{page}
+    defaults: { _controller: LandmarxLandmarkBundle:Landmark:index, page: 1 }
+landmarx_landmark_nearby:
+    path: /nearby/{page}
+    defaults: { _controller: LandmarxLandmarkBundle:Landmark:nearby, page: 1 }
+landmarx_landmark_new:
+    path: /new
+    defaults: { _controller: LandmarxLandmarkBundle:Landmark:new }
+landmarx_landmark_search:
+    path: /search/{page}
+    defaults: { _controller: LandmarxLandmarkBundle:Landmark:search, page: 1 }
+landmarx_landmark_show:
+    path: /{slug}
+    defaults: { _controller: LandmarxLandmarkBundle:Landmark:show }

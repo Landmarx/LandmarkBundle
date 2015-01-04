@@ -1,0 +1,35 @@
+{
+    "name": "landmarx/landmark-bundle",
+    "type": "library",
+    "description": "landmark bundle for the landmarx system.",
+    "keywords": [
+        "landmark",
+        "mapping",
+        "mapping system",
+        "node",
+        "node mapping"
+    ],
+    "homepage": "http://landmarx.daviddurost.net",
+    "license": "MIT",
+    "authors": [
+        {
+        "name": "David Durost",
+        "homepage": "http://daviddurost.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Landmarx\\Bundle\\LandmarkBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.*-dev"
+        }
+    }
+}
