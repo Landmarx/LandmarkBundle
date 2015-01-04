@@ -1,0 +1,16 @@
+landmarx_landmark_type_index:
+    path: /{page}
+    defaults: { _controller: LandmarxLandmarkBundle:Type:index, page: 1 }
+    requirements:
+        page: \d+
+landmarx_landmark_type_new:
+    path: /new
+    defaults: { _controller: LandmarxLandmarkBundle:Type:new }
+landmarx_landmark_type_search:
+    path: /search/{page}
+    defaults: { _controller: LandmarxLandmarkBundle:Type:search, page: 1 }
+    requirements:
+        page: \d+
+landmarx_landmark_type_show:
+    path: /{slug}
+    defaults: { _controller: LandmarxLandmarkBundle:Type:show }
